@@ -6,14 +6,14 @@ import { RiVideoAddLine } from "react-icons/ri";
 import { useUtils } from "../context/UtilsContext";
 
 const Navbar = () => {
-  const { setIsSidebar, isSideBar, mobileShow, setMobileShow } = useUtils();
+  const { setIsSidebar, isSidebar, mobileShow, setMobileShow } = useUtils();
 
   useEffect(() => {
-    console.log({ isSideBar, mobileShow });
-  }, [isSideBar]);
+    console.log({ isSidebar, mobileShow });
+  }, [isSidebar]);
   const handleSlidebar = () => {
     if (window.innerWidth <= 1280) {
-      setIsSidebar(!isSideBar);
+      setIsSidebar(!isSidebar);
       setMobileShow(!mobileShow);
     }
     setIsSidebar(!isSideBar);
