@@ -6,21 +6,25 @@ export const AuthContext = createContext();
 export default function AuthProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
+  const [page, setPage] = useState(1)
+  const [cursor, setCursor] = useState("")
   const [value, setValue] = useState("new");
 
   useEffect(() => {
     fetchalldata(value);
-  }, [value]);
+  }, [value, page]);
 
   const fetchalldata = (query) => {
     setLoading(true);
-    fetchdata(`search/?q=${query}`).then(({contents}) => {
-      setData(contents);
+    fetchdata(`search/?q=${query}&cursor=${cursor}`).then((res) => {
+      console.log(res)
+      setData(res.contents);
+      setCursor(res.cursorNext)
       setLoading(false);
     });
   };
   return (
-    <AuthContext.Provider value={{ loading, data, value, setValue }}>
+    <AuthContext.Provider value={{ loading, data, value, setValue, page, setPage }}>
       {children}
     </AuthContext.Provider>
   );

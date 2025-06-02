@@ -18,10 +18,9 @@ const {loading} = useAuth()
     <>
     {loading && <Loading/>}
     <div>
-      <UNSAFE_RemixErrorBoundary>
+
       <Navbar />
 
-      </UNSAFE_RemixErrorBoundary>
     </div>
       <Routes>
         <Route path="/" exact element={<Home/>}/>
