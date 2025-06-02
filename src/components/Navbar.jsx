@@ -1,26 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineBell, AiOutlineMenu } from "react-icons/ai";
 import { CiSearch } from "react-icons/ci";
 import { IoMdMic } from "react-icons/io";
 import { RiVideoAddLine } from "react-icons/ri";
+import { useUtils } from "../context/UtilsContext";
 
 const Navbar = () => {
+  const { setIsSidebar, isSideBar, mobileShow, setMobileShow } = useUtils();
+
+  useEffect(() => {
+    console.log({ isSideBar, mobileShow });
+  }, [isSideBar]);
+  const handleSlidebar = () => {
+    if (window.innerWidth <= 1280) {
+      setIsSidebar(!isSideBar);
+      setMobileShow(!mobileShow);
+    }
+    setIsSidebar(!isSideBar);
+  };
   return (
     <div className="flex justify-between fixed top-0 w-[100%] bg-white px-6 py-2">
       <div className="flex item-center space-x-4 cursor-pointer">
-        <AiOutlineMenu className="text-xl cursor-pointer" />
+        <AiOutlineMenu
+          className="text-xl cursor-pointer"
+          onClick={handleSlidebar}
+        />
         {/* <img
           className="w-28"
           style={{ width: "100px" }}
           src="https://1000logos.net/wp-content/uploads/2017/05/Youtube-Logo.png"
           alt="youtube clone"
         /> */}
-
         Yt
       </div>
       <div className=" w-[35%] flex">
         <div className="w-[100%] px-3 border  border-gray-400 py-2 rounded-l-full ">
-          <input type="text" className="outline-none w-full" placeholder="search" />
+          <input
+            type="text"
+            className="outline-none w-full"
+            placeholder="search"
+          />
         </div>
         <button className="px-4 py-2  rounded-r-full bg-gray-100">
           <CiSearch className="text-xl" />
