@@ -13,7 +13,7 @@ const Listitems = () => {
     "News",
   ];
   return (
-    <div className="flex overflow-x-scroll hide-scroll-bar px-5">
+    <div className="flex overflow-x-hidden hide-scroll-bar px-5">
       <div className="flex  space-x-4 justify-center items-center">
         {cats.map((ele) => {
           return (

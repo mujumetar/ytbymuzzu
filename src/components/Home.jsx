@@ -8,25 +8,33 @@ const Home = () => {
   const pageRef = useRef()
 
   console.log(pageRef.current)
-  const { data,loading, page, setPage } = useAuth();
+  const { data, loading, page, setPage } = useAuth();
   console.log(data);
   return (
-    <div className="flex mt-16">
-      <Sidebar />
-    <div className="h-[calc(100vh-6.625rem)] overflow-y-scroll overflow-x-hidden ">
-      <Listitems/>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-5">
-    
-        {!loading && data.map((ele) => {
-          if (ele.type !== "video") return false;
-          return <Video ref={pageRef} key={ele.id} video={ele?.video} />;
-        })}
+    <>
+
+      <div className="flex mt-16">
+        <Sidebar />
+        <div className="h-[calc(100vh-6.625rem)] overflow-y-scroll overflow-x-hidden ">
+          <Listitems />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-5">
+
+            {!loading && data.map((ele) => {
+              if (ele.type !== "video") return false;
+              return <Video ref={pageRef} key={ele.id} video={ele?.video} />;
+            })}
+          </div>
+        </div>
       </div>
-    </div>
-    <button >Prev</button>
-    <button>{page}</button>
-    <button onClick={() => setPage(page+1)}>Next</button>
-    </div>
+      <div className="flex justify-center my-5">
+        <button className="p-2 border rounded-md bg-gray-200 my-2">Prev</button>
+        <button className="btn bg-blend-darken p-3 ">{page}</button>
+        <button className="p-2 border rounded-md bg-gray-200 my-2"  onClick={() => setPage(page + 1)}>Next</button>
+      </div>
+
+    </>
+
+
   );
 };
 
