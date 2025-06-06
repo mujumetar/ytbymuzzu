@@ -1,27 +1,92 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Sidebar from "../components/Sidebar";
 import Video from "./Video";
 import { useAuth } from "../context/AuthProvider";
 import Listitems from "./Listitems";
+import { data } from "../../data";
 
 const Home = () => {
-  const pageRef = useRef()
+  // console.log(pageRef.current)
+  const { 
+    // data, 
+    loading, page, setPage } = useAuth();
+ 
 
-  console.log(pageRef.current)
-  const { data, loading, page, setPage } = useAuth();
-  console.log(data);
+
+const scrollref = useRef(null)
+const pageRef = useRef(null)
+const bigRef = useRef(null)
+
+
+
+useEffect(() => {
+  
+  let scrollEle = scrollref.current
+  // console.log(scrollEle)
+  console.log(pageRef)
+  let lastEle = scrollref.current.children[scrollref.current.children.length-1]
+
+  // console.log(lastEle)
+   console.log(lastEle)
+const scrollDiv = scrollEle.getBoundingClientRect();
+const lastDiv = lastEle.getBoundingClientRect();
+
+
+console.log("big Post -"+ scrollDiv.top)
+console.log("last Post -"+ lastDiv.top)
+
+
+
+
+  
+}, [])
+
+function scrolling(){
+
+
+    
+  let scrollEle = scrollref.current
+  // console.log(scrollEle)
+  // console.log(pageRef)
+  let lastEle = scrollref.current.children[scrollref.current.children.length-1]
+
+  // console.log(lastEle)
+  //  console.log(lastEle)
+const scrollDiv = scrollEle.getBoundingClientRect();
+const lastDiv = lastEle.getBoundingClientRect();
+
+
+console.log("scrollDiv.top "+ scrollDiv.bottom)
+console.log("lastDiv.top "+ lastDiv.top)
+
+// console.log(typeof(lastDiv.bottom))
+
+if(scrollDiv.bottom == lastDiv.top)
+{
+  console.log("called")
+}
+
+
+
+  
+}
+
+
+
+
+  
   return (
     <>
 
       <div className="flex mt-16">
         <Sidebar />
-        <div className="h-[calc(100vh-6.625rem)] overflow-y-scroll overflow-x-hidden ">
+        <div  onScroll={scrolling} ref={bigRef} className="scroller border border-4 border-red-800  h-[calc(100vh-6.625rem)] h-screen overflow-y-scroll">
           <Listitems />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-5">
+          <div ref={scrollref} className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-5">
 
             {!loading && data.map((ele) => {
               if (ele.type !== "video") return false;
-              return <Video ref={pageRef} key={ele.id} video={ele?.video} />;
+              return <Video pageRef={pageRef}  key={ele.id} video={ele?.video} />;
             })}
           </div>
         </div>

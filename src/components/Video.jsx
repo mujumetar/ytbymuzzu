@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Time from "../loader/Time";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { abbreviateNumber } from "js-abbreviation-number";
 
-const Video = ({ video }) => {
+const Video = ({ video, pageRef }) => {
   // console.log(video);
+
+
+
+
   return (
-    <>
+    <div ref={pageRef}>
       <Link to={`video/${video?.videoId}`}>
-        <div className="flex flex-col ">
+        <div  className="flex flex-col ">
           <div className="h-48 relative rounded-md md:h-56 md:ronuded-xl hover:rounded-none duration-200 overflow-hidden">
             <img
               className="h-full w-full"
@@ -52,7 +56,7 @@ const Video = ({ video }) => {
           </div>
         </div>
       </Link>
-    </>
+    </div>
   );
 };
 

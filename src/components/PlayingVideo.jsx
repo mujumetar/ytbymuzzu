@@ -47,7 +47,7 @@ const PlayingVideo = () => {
             <div className="left flex justify-between align-center">
 
               <span className="flex items-center font-semibold mt-2 text-[12px] text-gray-600">
-                <div>
+                {/* <div>
                   <div className="flex h-9 w-9 rounded-full overflow-hidden border">
                     <img
                       className="h-full w-full overflow-hidden rounded-full"
@@ -55,7 +55,7 @@ const PlayingVideo = () => {
                       alt=""
                     />
                   </div>
-                </div>
+                </div> */}
                 <p className="text-[15px] text-black">{video?.author.title}</p>
                 {video?.author.badges[0]?.type === "VERIFIED_CHANNEL" && (
                   <BsFillCheckCircleFill className="text-gray-600 ml-1 text-lg" />
