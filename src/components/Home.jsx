@@ -23,17 +23,17 @@ useEffect(() => {
   
   let scrollEle = scrollref.current
   // console.log(scrollEle)
-  console.log(pageRef)
+  // console.log(pageRef)
   let lastEle = scrollref.current.children[scrollref.current.children.length-1]
 
   // console.log(lastEle)
-   console.log(lastEle)
+  //  console.log(lastEle)
 const scrollDiv = scrollEle.getBoundingClientRect();
 const lastDiv = lastEle.getBoundingClientRect();
 
 
-console.log("big Post -"+ scrollDiv.top)
-console.log("last Post -"+ lastDiv.top)
+// console.log("big Post -"+ scrollDiv.top)
+// console.log("last Post -"+ lastDiv.top)
 
 
 
@@ -56,8 +56,8 @@ const scrollDiv = scrollEle.getBoundingClientRect();
 const lastDiv = lastEle.getBoundingClientRect();
 
 
-console.log("scrollDiv.top "+ scrollDiv.bottom)
-console.log("lastDiv.top "+ lastDiv.top)
+// console.log("scrollDiv.top "+ scrollDiv.bottom)
+// console.log("lastDiv.top "+ lastDiv.top)
 
 // console.log(typeof(lastDiv.bottom))
 

@@ -3,27 +3,28 @@ import { AiOutlineBell, AiOutlineMenu } from "react-icons/ai";
 import { CiSearch } from "react-icons/ci";
 import { IoMdMic } from "react-icons/io";
 import { RiVideoAddLine } from "react-icons/ri";
-// import { UtilsContext } from "../context/UtilsContext";
+import { UtilsContext } from "../context/UtilsContext";
 
 const Navbar = () => {
-  // const { setIsSidebar, isSidebar, mobileShow, setMobileShow } = useContext(UtilsContext);
+  const { setIsSidebar, isSidebar, mobileShow, setMobileShow } = useContext(UtilsContext);
 
-  // useEffect(() => {
-  //   console.log({ isSidebar, mobileShow });
-  // }, [isSidebar]);
-  // const handleSlidebar = () => {
-  //   if (window.innerWidth <= 1280) {
-  //     setIsSidebar(!isSidebar);
-  //     setMobileShow(!mobileShow);
-  //   }
-  //   setIsSidebar(!isSidebar);
-  // };
+  useEffect(() => {
+    console.log({ isSidebar, mobileShow });
+  }, [isSidebar]);
+
+  const handleSlidebar = () => {
+    if (window.innerWidth <= 1280) {
+      setIsSidebar(!isSidebar);
+      setMobileShow(!mobileShow);
+    }
+    setIsSidebar(!isSidebar);
+  };
   return (
     <div className="flex justify-between fixed top-0 w-[100%] bg-white px-6 py-2">
       <div className="flex item-center space-x-4 cursor-pointer">
         <AiOutlineMenu
           className="text-xl cursor-pointer"
-
+onClick={handleSlidebar}
         />
         {/* <img
           className="w-28"

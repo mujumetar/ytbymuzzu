@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { fetchdata } from "../utils/rapidapi";
 import Sidebar from "./Sidebar";
 import SearchCard from "./SearchCard";
+// import index from "index"
+
 
 const Search = () => {
   const [result, setResult] = useState();
@@ -20,18 +22,18 @@ const Search = () => {
   };
   return (
     <div className="mt-32">
-      {/* <div>
+      <div>
         <Sidebar />
         <div>
           <div>
-            {result.map((ele,index) => {
+            {result?.map((ele,index) => {
               if (ele?.type !== "video") return false;
-              let video = 
+      
               return <SearchCard key={index} video={ele?.video} />;
             })}
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

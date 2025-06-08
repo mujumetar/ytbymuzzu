@@ -4,7 +4,7 @@ const SearchCard = ({video}) => {
     console.log(video)
   return (
     <div>
-
+hiii
     </div>
   )
 }
