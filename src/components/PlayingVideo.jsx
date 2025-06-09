@@ -30,7 +30,7 @@ const PlayingVideo = () => {
         <div className="flex flex-col lg:w-[calc(100%-350px)] xl:w-[100%-400px] px-4 py-3 lg:py-6">
           <div className="h-[200px] md:h-[700px] ml-[-16px] mr-[-16px] lg:ml-0">
             <ReactPlayer
-              
+
               url={`https://www.youtube.com/watch?v=${id}`}
               height="100%"
               width="100%"
@@ -66,26 +66,31 @@ const PlayingVideo = () => {
 
                 </div>
               </span>
+            </div>
 
-              <div className="my-auto flex flex-row justify-between text-sm">
-                <div className="flex ">
-                  <span className="text-sm flex rounded-l-full justify-center items-center rounded-r-full p-1 bg-gray-200"><AiOutlineLike className="text-xl mx-2" />{video?.stats.likes} <span className="text-dark-200">|</span> <AiOutlineDislike className="mx-1 text-xl" /></span>
-                </div>
-                <div className="flex mx-2">
-                  <span className="text-sm flex justify-center items-center rounded-l-full rounded-r-full p-1 bg-gray-200"><PiShareFat className="text-xl mx-1" /> Share</span>
-                </div>
-                <div className="flex mx-2">
-                  <span className="text-sm flex justify-center items-center rounded-l-full rounded-r-full p-1 bg-gray-200"><GoDownload  className="text-xl mx-1" /> Download</span>
-                </div>
-                <div className="flex mx-2">
-                  <span className="text-sm flex justify-center items-center rounded-l-full rounded-r-full p-1 bg-gray-200"><CiBookmark  className="text-xl mx-1" /> Save</span>
-                </div>
-                <div className="flex mx-2">
-                  <span className="text-sm flex justify-center items-center rounded-full px-2 bg-gray-200"><BsThreeDots  className="text-xl mx-1" /></span>
+            <div>
+              <div className="left flex justify-end  items-end-safe my-2 inline-block">
+                <div className="my-auto flex flex-row justify-between text-sm">
+                  <div className="flex">
+                    <span className="text-sm flex rounded-l-full justify-center items-center rounded-r-full p-2 bg-gray-200 cursor-pointer"><AiOutlineLike className="text-xl mx-1" /><span className="mr-2">{`${abbreviateNumber(video?.stats?.likes, 2)}`}</span><span className="text-dark-200">|</span> <AiOutlineDislike className="mx-1 text-xl" /></span>
+                  </div>
+                  <div className="flex mx-2">
+                    <span className="text-sm flex justify-center items-center rounded-l-full rounded-r-full p-2 bg-gray-200 cursor-pointer"><PiShareFat className="text-xl mx-1" /> Share</span>
+                  </div>
+                  <div className="flex mx-2">
+                    <span className="text-sm flex justify-center items-center rounded-l-full rounded-r-full p-2 bg-gray-200 cursor-pointer"><GoDownload className="text-xl mx-1" /> Download</span>
+                  </div>
+                  <div className="flex mx-2">
+                    <span className="text-sm flex justify-center items-center rounded-l-full rounded-r-full p-2 bg-gray-200 cursor-pointer"><CiBookmark className="text-xl mx-1" /> Save</span>
+                  </div>
+                  <div className="flex mx-2">
+                    <span className="text-sm flex justify-center items-center rounded-full px-2 bg-gray-200 cursor-pointer"><BsThreeDots className="text-xl mx-1" /></span>
+                  </div>
                 </div>
               </div>
-
             </div>
+
+
 
             <div className="flex text-gray-500 text-[12px]">
               <span>{`${abbreviateNumber(video?.stats?.views, 2)} views`}</span>

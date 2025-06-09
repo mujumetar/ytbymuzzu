@@ -7,6 +7,7 @@ export default function AuthProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1)
+  const [p,setP] = useState(false)
   const [cursor, setCursor] = useState("")
   const [value, setValue] = useState("new");
 
@@ -24,7 +25,7 @@ export default function AuthProvider({ children }) {
     });
   };
   return (
-    <AuthContext.Provider value={{ loading, data, value, setValue, page, setPage }}>
+    <AuthContext.Provider value={{ loading, data, value, setValue, page, setPage,p ,setP }}>
       {children}
     </AuthContext.Provider>
   );
