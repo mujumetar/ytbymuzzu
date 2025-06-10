@@ -25,10 +25,20 @@ import { UtilsContext } from "../context/UtilsContext";
 
 const Sidebar = () => {
   const { setIsSidebar, isSidebar, mobileShow, setMobileShow } = useContext(UtilsContext);
+
+  const ModelOverlay = () => {
+return (
+  <div className="flex fixed top-0 bottom-0 left-0 bg-black-50 z-30" onClick={() => setMobileShow(!mobileShow)}>
+
+  </div>
+)
+  }
   return (
     <>
 
-      <div className={`${mobileShow ? "" : "hidden w-0"}}`}>
+      <div className={`${mobileShow ? "fixed top-0 bottom-0 transition-all duration-300 bg-white z-40 h-screen w-[70%] sm:w-[30%]" : "hidden h-[calc(100vh-6.625rem)] w-[18%]"
+
+        } xl:static xl:block  px-2 lg:px-6 overflow-y-scroll overflow-x-hidden scrollbar-thin }`}>
         <div >
           <div className="space-y-3 items-center">
             <div className="flex items-center space-x-6 hover:bg-gray-300 duration-300 rounded-xl p-1">
@@ -150,6 +160,7 @@ const Sidebar = () => {
           </div>
         </div>
       </div>
+      {mobileShow ? <ModelOverlay/>:null}
     </>
 
   );

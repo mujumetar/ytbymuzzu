@@ -3,13 +3,13 @@ import Sidebar from "../components/Sidebar";
 import Video from "./Video";
 import { useAuth } from "../context/AuthProvider";
 import Listitems from "./Listitems";
-import { data } from "../../data";
+// import { data } from "../../data";
 
 const Home = () => {
 
 
   const {
-
+data,
     loading, page, setPage, p, setP } = useAuth();
 
 
@@ -73,11 +73,6 @@ const Home = () => {
 
 
   }
-
-
-
-
-
   return (
     <>
 
