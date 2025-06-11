@@ -18,7 +18,7 @@ export default function AuthProvider({ children }) {
   const fetchalldata = (query) => {
     setLoading(true);
     fetchdata(`search/?q=${query}&cursor=${cursor}`).then((res) => {
-      console.log(res)
+      // console.log(res)
       setData(res.contents);
       setCursor(res.cursorNext)
       setLoading(false);
