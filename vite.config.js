@@ -5,12 +5,5 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-    require("tailwind-scrollbar")({
-      nocompatible: true,
-      preferredStrategy: "pseudoelements",
-    }),
-  ],
+  plugins: [react(), tailwindcss()],
 });

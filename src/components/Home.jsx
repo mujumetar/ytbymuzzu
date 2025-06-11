@@ -22,15 +22,15 @@ data,
 
   useEffect(() => {
 
-    let scrollEle = scrollref.current
-    // console.log(scrollEle)
-    // console.log(pageRef)
-    let lastEle = scrollref.current.children[scrollref.current.children.length - 1]
+    // let scrollEle = scrollref.current
+    // // console.log(scrollEle)
+    // // console.log(pageRef)
+    // let lastEle = scrollref.current.children[scrollref.current.children.length - 1]
 
-    // console.log(lastEle)
-    //  console.log(lastEle)
-    const scrollDiv = scrollEle.getBoundingClientRect();
-    const lastDiv = lastEle.getBoundingClientRect();
+    // // console.log(lastEle)
+    // //  console.log(lastEle)
+    // const scrollDiv = scrollEle.getBoundingClientRect();
+    // const lastDiv = lastEle.getBoundingClientRect();
 
 
     // console.log("big Post -"+ scrollDiv.top)
@@ -44,30 +44,31 @@ data,
 
   function scrolling() {
 
+    console.log("hii")
 
 
-    let scrollEle = scrollref.current
-    // console.log(scrollEle)
-    // console.log(pageRef)
-    let lastEle = scrollref.current.children[scrollref.current.children.length - 1]
+    // let scrollEle = scrollref.current
+    // // console.log(scrollEle)
+    // // console.log(pageRef)
+    // let lastEle = scrollref.current.children[scrollref.current.children.length - 1]
 
-    // console.log(lastEle)
-    //  console.log(lastEle)
-    const scrollDiv = scrollEle.getBoundingClientRect();
-    const lastDiv = lastEle.getBoundingClientRect();
+    // // console.log(lastEle)
+    // //  console.log(lastEle)
+    // const scrollDiv = scrollEle.getBoundingClientRect();
+    // const lastDiv = lastEle.getBoundingClientRect();
 
 
-    // console.log("scrollDiv.top " + scrollDiv.bottom)
-    let winh = window.innerHeight
-    // console.log(winh)
-    // console.log("lastDiv.top " + lastDiv.top)
+    // // console.log("scrollDiv.top " + scrollDiv.bottom)
+    // let winh = window.innerHeight
+    // // console.log(winh)
+    // // console.log("lastDiv.top " + lastDiv.top)
 
-    // console.log(typeof(lastDiv.bottom))
+    // // console.log(typeof(lastDiv.bottom))
 
-    if (Math.round(lastDiv.top) <= winh) {
-      console.log("called")
-      setP(true)
-    }
+    // if (Math.round(lastDiv.top) <= winh) {
+    //   console.log("called")
+    //   setP(true)
+    // }
 
 
 
