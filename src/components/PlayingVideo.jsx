@@ -8,6 +8,7 @@ import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 import { PiShareFat } from "react-icons/pi";
 import { GoDownload } from "react-icons/go";
 import { CiBookmark } from "react-icons/ci";
+import SuggestedVideo from "./SuggestedVideo";
 
 const PlayingVideo = () => {
   const [video, setVideo] = useState();
@@ -16,6 +17,7 @@ const PlayingVideo = () => {
 
   useEffect(() => {
     fetchVideoDetails();
+    fetchRelatedVideo();
   }, [id]);
 
   const fetchVideoDetails = () => {
@@ -24,13 +26,19 @@ const PlayingVideo = () => {
       setVideo(res);
     });
   };
+
+  const fetchRelatedVideo = () => {
+    fetchdata(`video/related-contents/?id=${id}`).then((res) => {
+      // console.log(res);
+      setRelatedVideo(res.contents);
+    });
+  };
   return (
     <div className="flex justify-center flex-row h-[calc(100%-56px)] mt-16">
       <div className="w-full max-w-[1500px] flex flex-col lg:flex-row">
         <div className="flex flex-col lg:w-[calc(100%-350px)] xl:w-[100%-400px] px-4 py-3 lg:py-6">
           <div className="h-[200px] md:h-[700px] ml-[-16px] mr-[-16px] lg:ml-0">
             <ReactPlayer
-
               url={`https://www.youtube.com/watch?v=${id}`}
               height="100%"
               width="100%"
@@ -45,7 +53,6 @@ const PlayingVideo = () => {
             </span>
 
             <div className="left flex justify-between align-center">
-
               <span className="flex items-center font-semibold mt-2 text-[12px] text-gray-600">
                 {/* <div>
                   <div className="flex h-9 w-9 rounded-full overflow-hidden border">
@@ -59,38 +66,49 @@ const PlayingVideo = () => {
                 <p className="text-[15px] text-black">{video?.author.title}</p>
                 {video?.author.badges[0]?.type === "VERIFIED_CHANNEL" && (
                   <BsFillCheckCircleFill className="text-gray-600 ml-1 text-lg" />
-
                 )}
 
-                <div>
-
-                </div>
+                <div></div>
               </span>
             </div>
 
             <div>
-              <div className="left flex justify-end  items-end-safe my-2 inline-block">
+              <div className="left flex justify-end  items-end-safe my-2 ">
                 <div className="my-auto flex flex-row justify-between text-sm">
                   <div className="flex">
-                    <span className="text-sm flex rounded-l-full justify-center items-center rounded-r-full p-2 bg-gray-200 cursor-pointer"><AiOutlineLike className="text-xl mx-1" /><span className="mr-2">{`${abbreviateNumber(video?.stats?.likes, 2)}`}</span><span className="text-dark-200">|</span> <AiOutlineDislike className="mx-1 text-xl" /></span>
+                    <span className="text-sm flex rounded-l-full justify-center items-center rounded-r-full p-2 bg-gray-200 cursor-pointer">
+                      <AiOutlineLike className="text-xl mx-1" />
+                      <span className="mr-2">{`${abbreviateNumber(
+                        video?.stats?.likes,
+                        2
+                      )}`}</span>
+                      <span className="text-dark-200">|</span>{" "}
+                      <AiOutlineDislike className="mx-1 text-xl" />
+                    </span>
                   </div>
                   <div className="flex mx-2">
-                    <span className="text-sm flex justify-center items-center rounded-l-full rounded-r-full p-2 bg-gray-200 cursor-pointer"><PiShareFat className="text-xl mx-1" /> Share</span>
+                    <span className="text-sm flex justify-center items-center rounded-l-full rounded-r-full p-2 bg-gray-200 cursor-pointer">
+                      <PiShareFat className="text-xl mx-1" /> Share
+                    </span>
                   </div>
                   <div className="flex mx-2">
-                    <span className="text-sm flex justify-center items-center rounded-l-full rounded-r-full p-2 bg-gray-200 cursor-pointer"><GoDownload className="text-xl mx-1" /> Download</span>
+                    <span className="text-sm flex justify-center items-center rounded-l-full rounded-r-full p-2 bg-gray-200 cursor-pointer">
+                      <GoDownload className="text-xl mx-1" /> Download
+                    </span>
                   </div>
                   <div className="flex mx-2">
-                    <span className="text-sm flex justify-center items-center rounded-l-full rounded-r-full p-2 bg-gray-200 cursor-pointer"><CiBookmark className="text-xl mx-1" /> Save</span>
+                    <span className="text-sm flex justify-center items-center rounded-l-full rounded-r-full p-2 bg-gray-200 cursor-pointer">
+                      <CiBookmark className="text-xl mx-1" /> Save
+                    </span>
                   </div>
                   <div className="flex mx-2">
-                    <span className="text-sm flex justify-center items-center rounded-full px-2 bg-gray-200 cursor-pointer"><BsThreeDots className="text-xl mx-1" /></span>
+                    <span className="text-sm flex justify-center items-center rounded-full px-2 bg-gray-200 cursor-pointer">
+                      <BsThreeDots className="text-xl mx-1" />
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
-
-
 
             <div className="flex text-gray-500 text-[12px]">
               <span>{`${abbreviateNumber(video?.stats?.views, 2)} views`}</span>
@@ -102,8 +120,17 @@ const PlayingVideo = () => {
                 {video?.description}
               </div>
             </div>
+            <div className="flex gap-x-6 font-semibold rounded-xl mt-4 text-xl">
+              {video?.stats?.comments} commets
+            </div>
             <div className="my-5"></div>
           </div>
+        </div>
+        <div className="flex flex-col px-4 py-6 h-[calc(100vh-4.625rem)] overflow-y-scroll overflow-x-hidden lg:w-[350px] xl:w-[400px]">
+          {relatedVideo?.map((ele, index) => {
+            if (ele?.type !== "video") return false;
+            return <SuggestedVideo key={index} video={ele?.video} />;
+          })}
         </div>
       </div>
     </div>

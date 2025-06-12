@@ -27,13 +27,16 @@ const Navbar = () => {
           className="text-2xl cursor-pointer"
           onClick={handleSlidebar}
         />
-        {/* <img
-          className="w-28"
-          style={{ width: "100px" }}
-          src="https://1000logos.net/wp-content/uploads/2017/05/Youtube-Logo.png"
-          alt="youtube clone"
-        /> */}
-        <img className="h-[30px]" src="/yt-logo - Copy.png" alt="yt-logo" />
+        <div>
+          <img
+            className="w-32"
+            // style={{ height: "30px" }}
+            src="/yt-logo - Copy.png"
+            alt="youtube clone"
+          />
+        </div>
+
+        {/* <img className="h-[30px]" src="/yt-logo - Copy.png" alt="yt-logo" /> */}
       </div>
       <div className=" w-[35%] flex">
         <div className="w-[100%] px-3 border  border-gray-400 py-2 rounded-l-full ">
