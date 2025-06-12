@@ -14,6 +14,7 @@ const PlayingVideo = () => {
   const [video, setVideo] = useState();
   const [relatedVideo, setRelatedVideo] = useState();
   const { id } = useParams();
+  const [liked,setLiked] = useState(false);
 
   useEffect(() => {
     fetchVideoDetails();
@@ -33,6 +34,11 @@ const PlayingVideo = () => {
       setRelatedVideo(res.contents);
     });
   };
+
+  const liking = () => {
+    console.log("liked")
+    setLiked(!liked);
+  }
   return (
     <div className="flex justify-center flex-row h-[calc(100%-56px)] mt-16">
       <div className="w-full max-w-[1500px] flex flex-col lg:flex-row">
@@ -74,36 +80,36 @@ const PlayingVideo = () => {
 
             <div>
               <div className="left flex justify-end  items-end-safe my-2 ">
-                <div className="my-auto flex flex-row justify-between text-sm">
+                <div className="my-auto flex flex-row justify-between text-sm overflow-x-scroll">
                   <div className="flex">
-                    <span className="text-sm flex rounded-l-full justify-center items-center rounded-r-full p-2 bg-gray-200 cursor-pointer">
-                      <AiOutlineLike className="text-xl mx-1" />
-                      <span className="mr-2">{`${abbreviateNumber(
+                    <span className="text-sm flex rounded-l-full bg-cust justify-center items-center rounded-r-full p-2 bg-gray-200 cursor-pointer">
+                      <AiOutlineLike className="text-xl mx-1 bg-cust"  />
+                      <span className="mr-2 bg-cust">{`${abbreviateNumber(
                         video?.stats?.likes,
                         2
                       )}`}</span>
-                      <span className="text-dark-200">|</span>{" "}
-                      <AiOutlineDislike className="mx-1 text-xl" />
+                      <span className="text-dark-200 bg-cust">|</span>{" "}
+                      <AiOutlineDislike className="mx-1 text-xl bg-cust" />
                     </span>
                   </div>
                   <div className="flex mx-2">
-                    <span className="text-sm flex justify-center items-center rounded-l-full rounded-r-full p-2 bg-gray-200 cursor-pointer">
-                      <PiShareFat className="text-xl mx-1" /> Share
+                    <span className="text-sm flex justify-center items-center rounded-l-full rounded-r-full p-2 bg-cust cursor-pointer">
+                      <PiShareFat className="text-xl mx-1 bg-cust" /> Share
                     </span>
                   </div>
                   <div className="flex mx-2">
-                    <span className="text-sm flex justify-center items-center rounded-l-full rounded-r-full p-2 bg-gray-200 cursor-pointer">
-                      <GoDownload className="text-xl mx-1" /> Download
+                    <span className="text-sm flex justify-center items-center rounded-l-full rounded-r-full p-2 bg-cust bg-gray-200 cursor-pointer">
+                      <GoDownload className="text-xl mx-1 bg-cust" /> Download
                     </span>
                   </div>
                   <div className="flex mx-2">
-                    <span className="text-sm flex justify-center items-center rounded-l-full rounded-r-full p-2 bg-gray-200 cursor-pointer">
-                      <CiBookmark className="text-xl mx-1" /> Save
+                    <span className="text-sm flex justify-center items-center rounded-l-full rounded-r-full bg-cust p-2 bg-gray-200 cursor-pointer">
+                      <CiBookmark className="text-xl mx-1 bg-cust" /> Save
                     </span>
                   </div>
                   <div className="flex mx-2">
-                    <span className="text-sm flex justify-center items-center rounded-full px-2 bg-gray-200 cursor-pointer">
-                      <BsThreeDots className="text-xl mx-1" />
+                    <span className="text-sm flex justify-center items-center rounded-full bg-cust px-2 bg-gray-200 cursor-pointer">
+                      <BsThreeDots className="text-xl mx-1 bg-cust" />
                     </span>
                   </div>
                 </div>
@@ -115,18 +121,22 @@ const PlayingVideo = () => {
               <span className="flex leading-none font-bold mx-1">•</span>
               <span className="text-gray-600">{video?.publishedTimeText}</span>
             </div>
-            <div className="desc">
-              <div className=" my-2 bg-gray-200 rounded-xl p-4 ">
+            <div className="desc bg-cust">
+              <div className="bg-cust my-2 bg-gray-200 rounded-xl p-4 ">
                 {video?.description}
               </div>
             </div>
             <div className="flex gap-x-6 font-semibold rounded-xl mt-4 text-xl">
-              {video?.stats?.comments} commets
+              {video?.stats?.comments} comments
             </div>
             <div className="my-5"></div>
           </div>
         </div>
         <div className="flex flex-col px-4 py-6 h-[calc(100vh-4.625rem)] overflow-y-scroll overflow-x-hidden lg:w-[350px] xl:w-[400px]">
+          <div className="my-2 px-3">
+            <h2 className="my-3">Suggested Video</h2>
+            <hr />
+          </div>
           {relatedVideo?.map((ele, index) => {
             if (ele?.type !== "video") return false;
             return <SuggestedVideo key={index} video={ele?.video} />;

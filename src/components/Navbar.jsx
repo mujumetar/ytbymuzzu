@@ -21,7 +21,7 @@ const Navbar = () => {
     setIsSidebar(!isSidebar);
   };
   return (
-    <div className="flex justify-between fixed top-0 w-[100%] bg-white px-6 py-2">
+    <div className="z-50 flex justify-between fixed top-0 w-[100%] bg-white px-6 py-2">
       <div className="flex item-center space-x-4 cursor-pointer">
         <AiOutlineMenu
           className="text-2xl cursor-pointer"
