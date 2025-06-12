@@ -122,7 +122,7 @@ const PlayingVideo = () => {
               <span className="text-gray-600">{video?.publishedTimeText}</span>
             </div>
             <div className="desc bg-cust">
-              <div className="bg-cust my-2 bg-gray-200 rounded-xl p-4 ">
+              <div className="bg-cust my-2 bg-gray-200 rounded-xl p-4 overflow-x-visible">
                 {video?.description}
               </div>
             </div>
